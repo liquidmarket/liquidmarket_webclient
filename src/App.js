@@ -2,10 +2,16 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { signOut } from "./auth";
+import { getUsers } from "./users";
 
 class App extends Component {
   signOut(){
     signOut();
+  }
+  getUsers(){
+    getUsers(users => {
+      console.log(users);
+    })
   }
   render() {
     return (
@@ -20,6 +26,8 @@ class App extends Component {
         <div className="g-signin2" data-onsuccess="onSignIn"></div>
         <br />
         <button onClick={this.signOut.bind(this)}>Sign out</button>
+        <br />
+        <button onClick={this.getUsers.bind(this)}>Get Users</button>
       </div>
     );
   }
