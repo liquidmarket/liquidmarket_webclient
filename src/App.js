@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { signOut } from "./auth";
 
 class App extends Component {
+  signOut(){
+    signOut();
+  }
   render() {
     return (
       <div className="App">
@@ -13,6 +17,9 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <div className="g-signin2" data-onsuccess="onSignIn"></div>
+        <br />
+        <button onClick={this.signOut.bind(this)}>Sign out</button>
       </div>
     );
   }
