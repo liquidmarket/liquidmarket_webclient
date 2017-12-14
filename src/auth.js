@@ -15,15 +15,6 @@ export function onSignIn(googleUser) {
     console.log('Image URL: ' + profile.getImageUrl());
     console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 }
-export function sendToken() {
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', 'https://enhanced-emblem-188503.appspot.com');
-  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  xhr.onload = function() {
-    console.log('Signed in as: ' + xhr.responseText);
-  };
-  xhr.send('idtoken=' + localStorage.getItem('id_token'));
-}
 export function signOut() {
   var auth2 = window.gapi.auth2.getAuthInstance();
   auth2.signOut().then(function () {
