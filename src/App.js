@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { signOut } from "./auth";
 import { getUsers } from "./users";
+import Accounts from "./TableViews/Accounts";
 
 class App extends Component {
   signOut(){
@@ -28,6 +29,8 @@ class App extends Component {
         <button onClick={this.signOut.bind(this)}>Sign out</button>
         <br />
         <button onClick={this.getUsers.bind(this)}>Get Users</button>
+        <br />
+        <Accounts />
       </div>
     );
   }
