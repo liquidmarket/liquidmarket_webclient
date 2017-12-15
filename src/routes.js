@@ -6,15 +6,12 @@ import {
 
 import Layout from "./Layout";
 import Accounts from "./TableViews/Accounts";
-
-const Home = () => (
-    <h2>Hi!</h2>
-)
+import Prices from "./TableViews/Prices";
   
 const App = () => (
     <Router>
         <Layout>
-            <Route exact path="/" component={Home}/>
+            <Route exact path="/" component={Prices}/>
             <Route path="/accounts" component={Accounts}/>
         </Layout>
     </Router>
