@@ -36,9 +36,9 @@ export default class Layout extends React.Component {
         return (
           <div>
             <Navbar color="faded" light expand="md">
-              <NavbarBrand>
-                  <Link to="/">liquid market</Link>
-              </NavbarBrand>
+            <NavbarBrand>
+                <Link to="/">liquid market</Link>
+            </NavbarBrand>
               <NavbarToggler onClick={this.toggle} />
               <UserMenu isOpen={this.state.isOpen} />
             </Navbar>
@@ -49,9 +49,9 @@ export default class Layout extends React.Component {
         return (
           <div>
             <Navbar color="faded" light expand="md">
-              <NavbarBrand>
-                  <Link to="/">liquid market</Link>
-              </NavbarBrand>
+            <NavbarBrand>
+                <Link to="/">liquid market</Link>
+            </NavbarBrand>
               <NavbarToggler onClick={this.toggle} />
               <LogInMenu />
             </Navbar>
@@ -77,15 +77,15 @@ function UserMenu(props) {
         <Collapse isOpen={props.isOpen} navbar>
         <Nav className="ml-auto" navbar>
           <NavItem>
-            <NavLink href="/markets/">Shareholdings</NavLink>
-          </NavItem>
-          <NavItem>
+            <Link to="shareholdings">Shareholdings</Link>
+        </NavItem>
+        <NavItem>
             <NavLink href="/trades/">Trades</NavLink>
-          </NavItem>
-          <NavItem>
+        </NavItem>
+        <NavItem>
             <NavLink href="https://github.com/liquidmarket">Github</NavLink>
-          </NavItem>
-          <UncontrolledDropdown nav inNavbar>
+        </NavItem>
+        <UncontrolledDropdown nav inNavbar>
             <DropdownToggle nav caret>
                 { localStorage.getItem('name') }
             </DropdownToggle>
