@@ -79,6 +79,9 @@ function UserMenu(props) {
         <Collapse isOpen={props.isOpen} navbar>
         <Nav className="ml-auto" navbar>
         <NavItem>
+            <NavLink tag={Link} to="prices">Prices</NavLink>
+        </NavItem>
+        <NavItem>
             <NavLink tag={Link} to="shareholdings">Shareholdings</NavLink>
         </NavItem>
         <NavItem>
