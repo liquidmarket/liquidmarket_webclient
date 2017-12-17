@@ -37,7 +37,7 @@ export default class Layout extends React.Component {
           <div>
             <Navbar color="faded" light expand="md">
             <NavbarBrand>
-                <Link to="/">liquid market</Link>
+                liquid market
             </NavbarBrand>
               <NavbarToggler onClick={this.toggle} />
               <UserMenu isOpen={this.state.isOpen} />
@@ -50,7 +50,7 @@ export default class Layout extends React.Component {
           <div>
             <Navbar color="faded" light expand="md">
             <NavbarBrand>
-                <Link to="/">liquid market</Link>
+                liquid market
             </NavbarBrand>
               <NavbarToggler onClick={this.toggle} />
               <LogInMenu />
@@ -76,8 +76,8 @@ function UserMenu(props) {
     return (
         <Collapse isOpen={props.isOpen} navbar>
         <Nav className="ml-auto" navbar>
-          <NavItem>
-            <Link to="shareholdings">Shareholdings</Link>
+        <NavItem>
+            <NavLink tag={Link} to="shareholdings">Shareholdings</NavLink>
         </NavItem>
         <NavItem>
             <NavLink href="/trades/">Trades</NavLink>
@@ -85,20 +85,20 @@ function UserMenu(props) {
         <NavItem>
             <NavLink href="https://github.com/liquidmarket">Github</NavLink>
         </NavItem>
-        <UncontrolledDropdown nav inNavbar>
+        <UncontrolledDropdown nav>
             <DropdownToggle nav caret>
                 { localStorage.getItem('name') }
             </DropdownToggle>
             <DropdownMenu >
               <DropdownItem>
-                <Link to="/accounts">Accounts</Link>
+                <NavLink tag={Link} to="/accounts">Accounts</NavLink>
               </DropdownItem>
               <DropdownItem>
-                <Link to="/settings">Settings</Link>
+                <NavLink tag={Link} to="/settings">Settings</NavLink>
               </DropdownItem>
               <DropdownItem divider />
               <DropdownItem>
-                <Link to="/" onClick={signOut}>Sign out</Link>
+                <NavLink tag={Link} to="/" onClick={signOut}>Sign out</NavLink>
               </DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown>
