@@ -20,12 +20,10 @@ function writeErrorFactory(fileName) {
 
 
 const actionFileText = `import dispatcher from "./../dispatcher";
-import Auth from "./../Auth/Auth";
-
-const auth = new Auth();
+import { getAuthorizationHeader } from "./../auth";
 
 export function refresh${name}s(){
-    let headers = auth.getAuthorizationHeader();
+    let headers = getAuthorizationHeader();
     fetch('${endpoint}', { headers })
         .then(res => res.json())
         .then(${name.toLowerCase()}s => dispatcher.dispatch({
