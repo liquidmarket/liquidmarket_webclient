@@ -16,6 +16,9 @@ class Accounts extends Component {
         });
         refreshAccounts();
     }
+    componentWillUnmount(){
+        accountStore.removeAllListeners();
+    }
     addAccount(){
         let name = prompt('name of acccount', 'great account name');
         createAccount(name);

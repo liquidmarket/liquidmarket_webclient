@@ -82,6 +82,9 @@ class ${name}s extends Component {
         });
         refresh${name}s();
     }
+    componentWillUnmount(){
+        ${name.toLowerCase()}Store.removeAllListeners();
+    }
     render(){
         return <p>{ JSON.stringify(this.state.${name.toLowerCase()}s) }</p>
     }

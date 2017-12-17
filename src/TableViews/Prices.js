@@ -16,6 +16,9 @@ class Prices extends Component {
         });
         refreshPrices();
     }
+    componentWillUnmount(){
+        priceStore.removeAllListeners();
+    }
     render(){
         return <PricesTable prices={this.state.prices} />
     }

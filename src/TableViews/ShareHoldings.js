@@ -15,6 +15,9 @@ class ShareHoldings extends Component {
         });
         refreshShareHoldings();
     }
+    componentWillUnmount(){
+        shareholdingStore.removeAllListeners();
+    }
     render(){
         let accounts = this.state.shareholdings.map(sh => <AccountShareholding key={sh.account_id} account={sh}/>);
         return <div>
