@@ -23,7 +23,11 @@ export default class Layout extends React.Component {
       signedIn: false
     };
     signedInListen(signedIn => {
-        this.setState({ signedIn });
+        if (signedIn) {
+            this.setState({ signedIn });
+        } else {
+            window.location.reload();
+        }
     });
   }
   toggle() {
@@ -52,10 +56,8 @@ export default class Layout extends React.Component {
             <NavbarBrand>
                 liquid market
             </NavbarBrand>
-              <NavbarToggler onClick={this.toggle} />
               <LogInMenu />
             </Navbar>
-            {this.props.children}
           </div>
         );
     }
