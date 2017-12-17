@@ -90,6 +90,9 @@ function UserMenu(props) {
         <NavItem>
             <NavLink href="https://github.com/liquidmarket">Github</NavLink>
         </NavItem>
+        <NavItem>
+            <NavLink tag={Link} to="help">Help</NavLink>
+        </NavItem>
         <UncontrolledDropdown nav>
             <DropdownToggle nav caret>
                 { localStorage.getItem('name') }

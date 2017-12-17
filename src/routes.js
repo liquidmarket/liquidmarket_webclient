@@ -8,6 +8,7 @@ import Layout from "./Layout";
 import Accounts from "./TableViews/Accounts";
 import Prices from "./TableViews/Prices";
 import Settings from "./Components/Settings";
+import Help from "./Components/Help";
 import ShareHoldings from "./TableViews/ShareHoldings";
   
 const App = () => (
@@ -18,6 +19,7 @@ const App = () => (
             <Route path="/prices" component={Prices}/>
             <Route path="/settings" component={Settings}/>
             <Route path="/shareholdings" component={ShareHoldings}/>
+            <Route path="/help" component={Help}/>
         </Layout>
     </Router>
   )
