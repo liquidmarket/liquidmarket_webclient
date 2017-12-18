@@ -85,7 +85,7 @@ function UserMenu(props) {
             <NavLink tag={Link} to="shareholdings">Shareholdings</NavLink>
         </NavItem>
         <NavItem>
-            <NavLink href="/trades/">Trades</NavLink>
+            <NavLink tag={Link} to="trades">Trades</NavLink>
         </NavItem>
         <NavItem>
             <NavLink href="https://github.com/liquidmarket">Github</NavLink>
