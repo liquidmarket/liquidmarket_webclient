@@ -1,3 +1,4 @@
+import { createOrRetriveUser } from "./Actions/Actions";
 export function getAuthorizationHeader() {
     let id_token = localStorage.getItem('id_token');
     if (id_token) {
@@ -11,6 +12,7 @@ export function onSignIn(googleUser) {
     localStorage.setItem('id_token', id_token);
     var profile = googleUser.getBasicProfile();
     localStorage.setItem('name', profile.getName());
+    createOrRetriveUser();
     console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
     console.log('Name: ' + profile.getName());
     console.log('Image URL: ' + profile.getImageUrl());
