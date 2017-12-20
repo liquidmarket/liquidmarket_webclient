@@ -12,6 +12,7 @@ export function onSignIn(googleUser) {
     localStorage.setItem('id_token', id_token);
     var profile = googleUser.getBasicProfile();
     localStorage.setItem('name', profile.getName());
+    localStorage.setItem('user_id', profile.getId());
     createOrRetriveUser();
     console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
     console.log('Name: ' + profile.getName());
@@ -24,6 +25,7 @@ export function signOut() {
   auth2.signOut().then(function () {
       localStorage.removeItem("id_token");
       localStorage.removeItem("name");
+      localStorage.removeItem("user_id");
       signedInUpdate(false);
   });
 }
