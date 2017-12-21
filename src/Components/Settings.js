@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { getAuthorizationHeader } from "./../auth";
 import { host } from "./../constants";
+// import { refreshAddresses } from "./../Actions/AddressActions";
+import Addresses from "./../TableViews/Addresses";
 
 class Settings extends Component {
     constructor(props) {
@@ -41,6 +43,8 @@ class Settings extends Component {
         if (this.state.user) {
             return <div>
                 <User user={this.state.user} updateUserFunc={this.updateUser.bind(this)}/>
+                <hr />
+                <Addresses />
             </div>
         } else {
             return <div>
