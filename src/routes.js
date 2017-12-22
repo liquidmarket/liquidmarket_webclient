@@ -17,7 +17,7 @@ const App = () => (
         <Layout>
             <Route exact path="/" component={Prices}/>
             <Route path="/accounts" component={Accounts}/>
-            <Route path="/prices" component={Prices}/>
+            <Route path="/markets" component={Prices}/>
             <Route path="/trades" component={Trades}/>
             <Route path="/settings" component={Settings}/>
             <Route path="/shareholdings" component={ShareHoldings}/>

@@ -33,8 +33,8 @@ function PricesTable(props) {
                     <th>Name</th>
                     <th>Short Name</th>
                     <th>Total Shares</th>
-                    <th>Buy</th>
-                    <th>Sell</th>
+                    <th>Price</th>
+                    <th>Spread</th>
                 </tr>
             </thead>
             <tbody>
@@ -50,8 +50,8 @@ function PriceRecord(props) {
         <td>{ p.organisation_name }</td>
         <td>{ p.short_name }</td>
         <td>{ p.total_shares }</td>
-        <td>{ p.buy_price }</td>
-        <td>{ p.sell_price }</td>
+        <td>{ p.price }</td>
+        <td>{ p.spread }</td>
     </tr>
 }
 
