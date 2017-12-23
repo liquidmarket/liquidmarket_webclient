@@ -72,8 +72,8 @@ class TradeButtons extends Component{
     render(){
         return (<Container>
                 <Row>
-                    <Col md={{ size: 5, offset: 1 }}><button className="buy" onClick={this.buy.bind(this)}>Buy ${this.props.listing.buy_price}</button></Col>
-                    <Col md="5"><button className="sell" onClick={this.sell.bind(this)}>Sell ${this.props.listing.sell_price}</button></Col>
+                    <Col md={{ size: 5, offset: 1 }}><button className="buy btn-buysell" onClick={this.buy.bind(this)}>Buy ${this.props.listing.buy_price}</button></Col>
+                    <Col md="5"><button className="sell btn-buysell" onClick={this.sell.bind(this)}>Sell ${this.props.listing.sell_price}</button></Col>
                 </Row>
             </Container>)
     }
