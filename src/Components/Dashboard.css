@@ -1,0 +1,14 @@
+.listing {
+    border: 1pt solid black;
+    padding: 5px;
+    /* margin: 5px; */
+    border-radius: 8px;
+}
+
+.listing h4 {
+    text-align: center;
+}
+
+.listing div {
+    text-align: center;
+}

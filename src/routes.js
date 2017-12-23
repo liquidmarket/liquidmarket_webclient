@@ -11,11 +11,12 @@ import Settings from "./Components/Settings";
 import Help from "./Components/Help";
 import ShareHoldings from "./TableViews/ShareHoldings";
 import Trades from "./TableViews/Trades";
+import Dashboard from "./Components/Dashboard";
   
 const App = () => (
     <Router>
         <Layout>
-            <Route exact path="/" component={Prices}/>
+            <Route exact path="/" component={Dashboard}/>
             <Route path="/accounts" component={Accounts}/>
             <Route path="/markets" component={Prices}/>
             <Route path="/trades" component={Trades}/>

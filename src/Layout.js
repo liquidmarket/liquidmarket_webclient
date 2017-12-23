@@ -40,7 +40,7 @@ export default class Layout extends React.Component {
         return (
           <div>
             <Navbar color="faded" light expand="md">
-            <NavbarBrand>
+            <NavbarBrand tag={Link} to="/">
                 liquid market
             </NavbarBrand>
               <NavbarToggler onClick={this.toggle} />
@@ -53,7 +53,7 @@ export default class Layout extends React.Component {
         return (
           <div>
             <Navbar color="faded" light expand="md">
-            <NavbarBrand>
+            <NavbarBrand tag={Link} to="/">
                 liquid market
             </NavbarBrand>
               <LogInMenu />

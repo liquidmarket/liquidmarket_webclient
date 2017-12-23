@@ -1,0 +1,14 @@
+button {
+    margin: 4px;
+    border-radius: 10px;
+    border: 0px solid black;
+    width: 150px;
+}
+
+.sell {
+    background-color: #EE3524;
+}
+
+.buy {
+    background-color: #6CB33F;
+}
