@@ -50,9 +50,9 @@ function Listing(props) {
                     <dt>Spread</dt>
                     <dd>${ props.listing.spread }</dd>
                     <dt>Market Capitalization</dt>
-                    <dd>${ props.listing.total_shares * props.listing.price }</dd>
+                    <dd>${ Number(props.listing.total_shares * props.listing.price).toLocaleString() }</dd>
                     <dt>Issued Shares</dt>
-                    <dd>{ props.listing.total_shares }</dd>
+                    <dd>{ props.listing.total_shares.toLocaleString() }</dd>
                 </dl>
             </div>
             <TradeButtons listing={props.listing} />
