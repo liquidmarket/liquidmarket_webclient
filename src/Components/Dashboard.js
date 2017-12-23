@@ -63,11 +63,29 @@ function Listing(props) {
 }
 
 class TradeButtons extends Component{
+    querySharesRequired(){
+        let x = prompt('Number of shares:','1000');
+        return Number.parseInt(x);
+    }
+    confirmBuyTrade(shares){
+        return window.confirm(`Are you sure you want to buy ${ shares } shares in ${ this.props.listing.organisation_name }(${ this.props.listing.short_name }) for $${ this.props.listing.buy_price * shares }`);
+    }
+    confirmSellTrade(shares){
+        return window.confirm(`Are you sure you want to sell ${ shares } shares in ${ this.props.listing.organisation_name }(${ this.props.listing.short_name }) for $${ this.props.listing.sell_price * shares }`);
+    }
     sell(){
-        alert('sell');
+        let shares = this.querySharesRequired();
+        let confirm = this.confirmSellTrade(shares);
+        if (confirm) {
+            alert('not implemented');
+        }
     }
     buy(){
-        alert('buy');
+        let shares = this.querySharesRequired();
+        let confirm = this.confirmBuyTrade(shares);
+        if (confirm) {
+            alert('not implemented');
+        }
     }
     render(){
         return (<Container>
