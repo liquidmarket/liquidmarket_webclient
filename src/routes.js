@@ -12,6 +12,8 @@ import Help from "./Components/Help";
 import ShareHoldings from "./TableViews/ShareHoldings";
 import Trades from "./TableViews/Trades";
 import Dashboard from "./Components/Dashboard";
+import Deposit from "./Components/Deposit";
+import Withdrawal from "./Components/Withdrawal";
   
 const App = () => (
     <Router>
@@ -23,6 +25,8 @@ const App = () => (
             <Route path="/settings" component={Settings}/>
             <Route path="/shareholdings" component={ShareHoldings}/>
             <Route path="/help" component={Help}/>
+            <Route path="/deposit" component={Deposit}/>
+            <Route path="/withdrawal" component={Withdrawal}/>
         </Layout>
     </Router>
   )

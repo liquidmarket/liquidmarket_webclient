@@ -103,6 +103,13 @@ function UserMenu(props) {
               </DropdownItem>
               <DropdownItem divider />
               <DropdownItem>
+                <NavLink tag={Link} to="/deposit">Deposit</NavLink>
+              </DropdownItem>
+              <DropdownItem>
+                <NavLink tag={Link} to="/withdrawal">Withdraw</NavLink>
+              </DropdownItem>
+              <DropdownItem divider />
+              <DropdownItem>
                 <NavLink tag={Link} to="/" onClick={signOut}>Sign out</NavLink>
               </DropdownItem>
             </DropdownMenu>
