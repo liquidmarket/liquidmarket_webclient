@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import listingStore from "./../Stores/ListingStore";
 import { refreshListings } from "./../Actions/ListingActions";
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col, Card, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
 import './Dashboard.css';
 import './TradeButtons.css';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
@@ -36,13 +36,18 @@ class Dashboard extends Component {
 
 function Listing(props) {
     return <Col md="4" sm="6" xs="12" className="listing">
-            <h4>{`${props.listing.organisation_name} (${props.listing.short_name})`}</h4>
-            <Chart listing={props.listing}/>
-            <Detail listing={props.listing}/>
-            <TradeButtons listing={props.listing} />
-            <div>
-                <a href={`/marketmakers/${ props.listing.market_maker_id }`} title={`The market maker for ${props.listing.short_name} is ${props.listing.market_maker_name}`}>{ props.listing.market_maker_name }</a>
-            </div>
+            <Card>
+                <CardTitle>{ props.listing.organisation_name }</CardTitle>
+                <CardSubtitle>{ props.listing.short_name }</CardSubtitle>
+                <CardBody>
+                    <Chart listing={props.listing}/>
+                    <Detail listing={props.listing}/>
+                    <TradeButtons listing={props.listing} />
+                    <div>
+                        <a href={`/marketmakers/${ props.listing.market_maker_id }`} title={`The market maker for ${props.listing.short_name} is ${props.listing.market_maker_name}`}>{ props.listing.market_maker_name }</a>
+                    </div>
+                </CardBody>
+            </Card>
         </Col>
 }
 
