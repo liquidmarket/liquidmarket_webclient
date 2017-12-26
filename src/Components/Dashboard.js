@@ -5,6 +5,7 @@ import { Container, Row, Col } from 'reactstrap';
 import './Dashboard.css';
 import './TradeButtons.css';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
+import { purchacePaymentRequest } from "./../payments";
 import moment from 'moment'
 
 class Dashboard extends Component {
@@ -83,7 +84,11 @@ class TradeButtons extends Component{
     buy(){
         let shares = this.querySharesRequired();
         let confirm = this.confirmBuyTrade(shares);
-        if (confirm) {
+        let total = this.props.listing.buy_price * shares;
+        let short_description = `${shares} x ${ this.props.listing.organisation_name }(${ this.props.listing.short_name }) at $${this.props.listing.buy_price} each`
+        if (confirm && window.PaymentRequest) {
+            purchacePaymentRequest(total, short_description);
+        } else if (confirm) {
             alert('not implemented');
         }
     }
