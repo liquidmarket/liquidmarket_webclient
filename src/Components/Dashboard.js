@@ -35,32 +35,44 @@ class Dashboard extends Component {
 }
 
 function Listing(props) {
-    let data = props.listing.prices.map(p => { return { name: moment(p.offered_at), uv: p.price };});
     return <Col md="4" sm="6" xs="12" className="listing">
             <h4>{`${props.listing.organisation_name} (${props.listing.short_name})`}</h4>
-            <LineChart width={320} height={130} data={data}>
-                <Line type="monotone" dataKey="uv" stroke="#8884d8" />
-                <CartesianGrid stroke="#ccc" />
-                <XAxis dataKey="name" />
-                <YAxis />
-            </LineChart>
-            <div>
-                <dl>
-                    <dt>Price</dt>
-                    <dd>${ props.listing.price }</dd>
-                    <dt>Spread</dt>
-                    <dd>${ props.listing.spread }</dd>
-                    <dt>Market Capitalization</dt>
-                    <dd>${ Number(props.listing.total_shares * props.listing.price).toLocaleString() }</dd>
-                    <dt>Issued Shares</dt>
-                    <dd>{ props.listing.total_shares.toLocaleString() }</dd>
-                </dl>
-            </div>
+            <Chart listing={props.listing}/>
+            <Detail listing={props.listing}/>
             <TradeButtons listing={props.listing} />
             <div>
                 <a href={`/marketmakers/${ props.listing.market_maker_id }`} title={`The market maker for ${props.listing.short_name} is ${props.listing.market_maker_name}`}>{ props.listing.market_maker_name }</a>
             </div>
         </Col>
+}
+
+function Chart(props) {
+    let data = props.listing.prices.map(p => { return { name: moment(p.offered_at), uv: p.price };});
+    return (
+        <LineChart width={320} height={130} data={data}>
+            <Line type="monotone" dataKey="uv" stroke="#8884d8" />
+            <CartesianGrid stroke="#ccc" />
+            <XAxis dataKey="name" />
+            <YAxis />
+        </LineChart>
+    )
+}
+
+function Detail(props) {
+    return (
+        <div>
+            <dl>
+                <dt>Price</dt>
+                <dd>${ props.listing.price }</dd>
+                <dt>Spread</dt>
+                <dd>${ props.listing.spread }</dd>
+                <dt>Market Capitalization</dt>
+                <dd>${ Number(props.listing.total_shares * props.listing.price).toLocaleString() }</dd>
+                <dt>Issued Shares</dt>
+                <dd>{ props.listing.total_shares.toLocaleString() }</dd>
+            </dl>
+        </div>
+    )
 }
 
 class TradeButtons extends Component{
