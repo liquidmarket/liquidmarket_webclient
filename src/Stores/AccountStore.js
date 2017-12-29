@@ -1,5 +1,6 @@
 import { EventEmitter } from "events";
 import dispatcher from "./../dispatcher";
+import { refreshAccounts } from "./../Actions/AccountActions";
 
 class AccountStore extends EventEmitter {
     constructor(){
@@ -7,6 +8,9 @@ class AccountStore extends EventEmitter {
         this.accounts = [];
     }
     getAll() {
+        if (this.accounts.length === 0) {
+            refreshAccounts();
+        }
         return this.accounts;
     }
     handleActions(action){
