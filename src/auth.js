@@ -14,10 +14,10 @@ export function onSignIn(googleUser) {
     localStorage.setItem('name', profile.getName());
     localStorage.setItem('user_id', profile.getId());
     createOrRetriveUser();
-    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-    console.log('Name: ' + profile.getName());
-    console.log('Image URL: ' + profile.getImageUrl());
-    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    console.debug('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    console.debug('Name: ' + profile.getName());
+    console.debug('Image URL: ' + profile.getImageUrl());
+    console.debug('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
     signedInUpdate(true);
 }
 export function signOut() {
