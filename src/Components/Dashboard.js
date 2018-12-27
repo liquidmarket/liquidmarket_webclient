@@ -5,7 +5,7 @@ import { Container, Row, Col, Card, CardBody, CardTitle, CardSubtitle } from 're
 import './Dashboard.css';
 import './TradeButtons.css';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
-import { purchacePaymentRequest } from "./../payments";
+import { BuyModal, SellModal } from "./PaymentModals";
 import moment from 'moment'
 
 class Dashboard extends Component {
@@ -34,21 +34,58 @@ class Dashboard extends Component {
     }
 }
 
-function Listing(props) {
+class Listing extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            listing: props.listing,
+            buyModal: false,
+            sellModal: false
+        }
+    }
+    showBuy(){
+        this.setState({
+            buyModal: true
+        });
+    }
+    showSell(){
+        this.setState({
+            sellModal: true
+        });
+    }
+    toggleSell(){
+        this.setState({
+            sellModal: !this.state.sellModal
+        });
+    }
+    toggleBuy(){
+        this.setState({
+            buyModal: !this.state.buyModal
+        });
+    }
+    render() {
     return <Col md="4" sm="6" xs="12" className="listing">
+            <BuyModal listing={this.state.listing} modal={this.state.buyModal} toggle={this.toggleBuy.bind(this)}/>
+            <SellModal listing={this.state.listing} modal={this.state.sellModal} toggle={this.toggleSell.bind(this)}/>
             <Card>
-                <CardTitle>{ props.listing.organisation_name }</CardTitle>
-                <CardSubtitle>{ props.listing.short_name }</CardSubtitle>
+                <CardTitle>{ this.state.listing.organisation_name }</CardTitle>
+                <CardSubtitle>{ this.state.listing.short_name }</CardSubtitle>
                 <CardBody>
-                    <Chart listing={props.listing}/>
-                    <Detail listing={props.listing}/>
-                    <TradeButtons listing={props.listing} />
+                    <Chart listing={this.state.listing}/>
+                    <Detail listing={this.state.listing}/>
+                    <Container>
+                        <Row>
+                            <Col md={{ size: 5, offset: 1 }}><button className="buy btn-buysell" onClick={this.showBuy.bind(this)}>Buy ${this.state.listing.buy_price}</button></Col>
+                            <Col md="5"><button className="sell btn-buysell" onClick={this.showSell.bind(this)}>Sell ${this.state.listing.sell_price}</button></Col>
+                        </Row>
+                    </Container>
                     <div>
-                        <a href={`/marketmakers/${ props.listing.market_maker_id }`} title={`The market maker for ${props.listing.short_name} is ${props.listing.market_maker_name}`}>{ props.listing.market_maker_name }</a>
+                        <a href={`/marketmakers/${ this.state.listing.market_maker_id }`} title={`The market maker for ${this.state.listing.short_name} is ${this.state.listing.market_maker_name}`}>{ this.state.listing.market_maker_name }</a>
                     </div>
                 </CardBody>
             </Card>
         </Col>
+    }
 }
 
 function Chart(props) {
@@ -80,43 +117,5 @@ function Detail(props) {
     )
 }
 
-class TradeButtons extends Component{
-    querySharesRequired(){
-        let x = prompt('Number of shares:','1000');
-        return Number.parseInt(x);
-    }
-    confirmBuyTrade(shares){
-        return window.confirm(`Are you sure you want to buy ${ shares } shares in ${ this.props.listing.organisation_name }(${ this.props.listing.short_name }) for $${ this.props.listing.buy_price * shares }`);
-    }
-    confirmSellTrade(shares){
-        return window.confirm(`Are you sure you want to sell ${ shares } shares in ${ this.props.listing.organisation_name }(${ this.props.listing.short_name }) for $${ this.props.listing.sell_price * shares }`);
-    }
-    sell(){
-        let shares = this.querySharesRequired();
-        let confirm = this.confirmSellTrade(shares);
-        if (confirm) {
-            alert('not implemented');
-        }
-    }
-    buy(){
-        let shares = this.querySharesRequired();
-        let confirm = this.confirmBuyTrade(shares);
-        let total = this.props.listing.buy_price * shares;
-        let short_description = `${shares} x ${ this.props.listing.organisation_name }(${ this.props.listing.short_name }) at $${this.props.listing.buy_price} each`
-        if (confirm && window.PaymentRequest) {
-            purchacePaymentRequest(total, short_description);
-        } else if (confirm) {
-            alert('not implemented');
-        }
-    }
-    render(){
-        return (<Container>
-                <Row>
-                    <Col md={{ size: 5, offset: 1 }}><button className="buy btn-buysell" onClick={this.buy.bind(this)}>Buy ${this.props.listing.buy_price}</button></Col>
-                    <Col md="5"><button className="sell btn-buysell" onClick={this.sell.bind(this)}>Sell ${this.props.listing.sell_price}</button></Col>
-                </Row>
-            </Container>)
-    }
-}
-
 export default Dashboard;
+

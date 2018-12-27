@@ -91,6 +91,20 @@ function makePurchace(deposit_amount, short_description) {
       console.error(err);
     }
   }
+  export async function canMakePaymentRequest(amount) {
+    if (window.PaymentRequest) {
+      try {
+        const request = new window.PaymentRequest(methodData, makeDeposit(amount), options);
+        return await request.canMakePayment();
+      } catch (err) {
+        // AbortError, SecurityError
+        console.error(err);
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
   export async function purchacePaymentRequest(amount, short_description) {
     try {
       const request = new window.PaymentRequest(methodData, makePurchace(amount, short_description), options);

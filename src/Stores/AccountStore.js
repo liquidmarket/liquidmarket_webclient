@@ -13,6 +13,14 @@ class AccountStore extends EventEmitter {
         }
         return this.accounts;
     }
+    getBalance(id){
+        const account = this.accounts.find(a => a.id === id);
+        if (account === undefined) {
+            return 0;
+        } else {
+            return account.balance;
+        }
+    }
     handleActions(action){
         switch (action.type) {
             case 'CREATE_ACCOUNT':
